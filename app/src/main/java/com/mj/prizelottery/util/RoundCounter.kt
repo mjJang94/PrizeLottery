@@ -1,8 +1,9 @@
 package com.mj.prizelottery.util
 
+import java.time.LocalDate
 import java.util.*
 
-open class DayCounter {
+open class RoundCounter {
 
     // Millisecond 하루(24 시간)
     private val ONE_DAY = 24 * 60 * 60 * 1000
@@ -11,7 +12,7 @@ open class DayCounter {
         a_year: Int,
         a_monthOfYear: Int,
         a_dayOfMonth: Int
-    ): String? { // D-day 설정
+    ): String { // D-day 설정
         val ddayCalendar: Calendar = Calendar.getInstance()
         ddayCalendar.set(a_year, a_monthOfYear, a_dayOfMonth)
 
@@ -21,6 +22,7 @@ open class DayCounter {
         var result = today - dday
 
         result = (result/7) + 1
+
 
         return result.toString()
     }

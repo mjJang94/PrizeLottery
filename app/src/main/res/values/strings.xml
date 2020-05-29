@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PrizeLottery</string>
+    <string name="common_round">회</string>
+    <string name="common_win_number">차 당첨번호</string>
 </resources>
