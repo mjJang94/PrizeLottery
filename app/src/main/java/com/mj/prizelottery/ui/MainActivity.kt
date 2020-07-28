@@ -40,7 +40,6 @@ class MainActivity() : AppCompatActivity(), View.OnClickListener {
 
                 }
 
-
                 Constant.RESPONSE_FAIL -> {
 
                 }
