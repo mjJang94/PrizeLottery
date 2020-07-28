@@ -10,21 +10,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2.5"
+        android:layout_weight="3.5"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/txt_round"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center|right|bottom"
+                android:gravity="center"
                 android:textColor="@color/black_000000"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -35,9 +35,9 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="5dp"
                 android:layout_weight="1"
-                android:gravity="center|left|bottom"
+                android:gravity="center"
                 android:textColor="@color/color_78787a"
-                android:textSize="18dp"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -48,6 +48,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -123,10 +124,11 @@
                 android:text="1" />
 
             <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black_000000"
                 android:gravity="center"
                 android:text="+" />
 
@@ -143,6 +145,12 @@
                 android:text="1" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_d5d5d5"/>
+
     </LinearLayout>
 
     <LinearLayout

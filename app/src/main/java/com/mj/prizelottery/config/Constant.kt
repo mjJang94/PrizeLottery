@@ -26,12 +26,12 @@ interface Constant {
         /**
          * (공통) 통신 실패
          */
-        const val RESPONSE_FAIL = 200
+        const val RESPONSE_FAIL = 400
 
         /**
          * 최근 회차 당첨 번호 조회 SUC/ FAIL
          */
         const val RESPONSE_SUC_GET_NUM = 201
-        const val RESPONSE_FAIL_GET_NUM = 400
+        const val RESPONSE_FAIL_GET_NUM = 401
     }
 }
