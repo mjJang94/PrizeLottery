@@ -10,11 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mj.prizelottery.R
 import com.mj.prizelottery.config.Constant
-import com.mj.prizelottery.config.net.RetrofitClient
 import com.mj.prizelottery.config.net.RetrofitConnection
 import com.mj.prizelottery.util.Utility
 import com.mj.prizelottery.vo.RecentRoundData
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +22,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
+    private val api: RetrofitConnection by inject() //api를 호출하고 싶은 부분에서 바로 호출하여 객체를 주입해서 사용 가능하다.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         init()
         getRecentLottoData()
+
 
     }
 
@@ -90,28 +92,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      */
     private fun getRecentLottoData() {
 
-        val recentRoundNumber = Utility().getDday(
+        api.getLotto(Constant.QUERY_METHOD, Utility().getDday(
             Constant.FIRST_ROUND_YEAR,
             Constant.FIRST_ROUND_MONTH,
             Constant.FIRST_ROUND_DAY
-        )
+        )).enqueue(object: Callback<RecentRoundData?>{
 
-        val retrofit = RetrofitClient().getInstance()
-        retrofit.create(RetrofitConnection::class.java)
-            .getLotto(Constant.QUERY_METHOD, recentRoundNumber)
-            .enqueue(object : Callback<RecentRoundData?> {
-
-                override fun onResponse(
-                    call: Call<RecentRoundData?>,
-                    response: Response<RecentRoundData?>
-                ) {
+            override fun onResponse(
+                call: Call<RecentRoundData?>,
+                response: Response<RecentRoundData?>
+            ) {
+                if (response.isSuccessful) {
                     val recentRoundData = response.body() as RecentRoundData
                     setRoundData(recentRoundData)
+                }else{
+                    Toast.makeText(this@MainActivity, "fail", Toast.LENGTH_SHORT).show()
                 }
+            }
 
-                override fun onFailure(call: Call<RecentRoundData?>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "정보 불러오기에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                }
-            })
+            override fun onFailure(call: Call<RecentRoundData?>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "fail", Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 }
