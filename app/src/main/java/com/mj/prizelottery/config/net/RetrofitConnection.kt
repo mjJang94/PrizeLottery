@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface RetrofitConnection {
 
     /**
-     * 기출 문제 데이터 요청
+     * 로또 최근회차 당첨번호 조회
      */
     @GET("/common.do")
     fun getLotto(@Query("method") method: String?, @Query("drwNo") drwNum: String?): Call<RecentRoundData>
