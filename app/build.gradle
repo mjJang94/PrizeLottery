@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:converter-simplexml:2.1.0'
 
+<<<<<<< HEAD
 // Koin for Android
     implementation "org.koin:koin-android:$koin_version"
 // Koin Android Scope features
@@ -49,4 +50,7 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:$koin_version"
 // Koin Android Experimental features
     implementation "org.koin:koin-android-ext:$koin_version"
+=======
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+>>>>>>> b5bc975c378df4c24eaa4af579bc0167e0c5906f
 }

@@ -22,6 +22,33 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
+<<<<<<< HEAD
+=======
+    val RED = "#ff312f"
+    val serverRequest = ServerRequest()
+    var roundCounter: RoundCounter? = null
+    var mCalendar: Calendar? = null
+
+    @SuppressLint("HandlerLeak")
+    private val mHandler: Handler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            when (msg.what) {
+                Constant.RESPONSE_SUC_GET_NUM -> {
+                    val recentRoundData = msg.obj as RecentRoundData
+                    setRoundData(recentRoundData)
+                }
+                Constant.RESPONSE_FAIL_GET_NUM -> {
+                    Toast.makeText(this@MainActivity, "정보 불러오기에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                }
+
+                Constant.RESPONSE_FAIL -> {
+                    Toast.makeText(this@MainActivity, "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+>>>>>>> b5bc975c378df4c24eaa4af579bc0167e0c5906f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
